@@ -53,7 +53,8 @@ function Success(ajaxData)
         $("#zones").append("<p>" + ajaxData.features[i].properties.name + " <button id = 'button"+ index +"'>Get Forecast</button> </p>")
         //create a button next to the zone that will call on the forecast
         $("#button"+index).click( () => {
-            //call the AJAX function:
+            //clear the forecast section and call the AJAX function:
+            $("#forecast").html("");
             CallAJAX("https://api.weather.gov/zones/land/" + ajaxData.features[index].properties.id + "/forecast",
             "GET", {}, "json", Success2,Fail,Always)
         });
